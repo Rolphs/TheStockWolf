@@ -14,13 +14,15 @@ setup(
     url='https://github.com/M4cs/Drugwars',
     packages=find_packages(),
     install_requires=[
-        'terminaltables'
+        'terminaltables',
+        'pyyaml'
     ],
     license='GNU General Public License v3 (GPLv3) (GPL)',
     zip_safe=True,
     entry_points={
         'console_scripts':[
             'drugwars = drugwars.__main__:main',
+            'stockwolf = stockwolf.main:main'
         ],
     },
     classifiers=[  # Used by PyPI to classify the project and make it searchable
