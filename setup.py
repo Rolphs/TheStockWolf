@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, requests
+import sys
 from setuptools import setup, find_packages
 
 setup(
@@ -14,8 +14,7 @@ setup(
     url='https://github.com/M4cs/Drugwars',
     packages=find_packages(),
     install_requires=[
-        'terminaltables',
-        'requests'
+        'terminaltables'
     ],
     license='GNU General Public License v3 (GPLv3) (GPL)',
     zip_safe=True,
