@@ -107,5 +107,3 @@ TheStockWolf/
 🤝 Contribuciones
 
 Este proyecto está en desarrollo activo y abierto a colaboración, desde diseño y gameplay hasta modelado económico o interfaces. ¿Tienes ideas? ¿Quieres escribir un país-agente distópico? ¡Súmate!
-
-¿Quieres que te genere también el `requirements.txt` base y los stubs de los archivos `.py` para iniciar el desarrollo?
