@@ -1,7 +1,5 @@
 from drugwars.events import *
 from drugwars.classes import Player
-import requests
-import os
 
 def main():
     clear()
