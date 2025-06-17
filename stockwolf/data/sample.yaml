@@ -1,0 +1,29 @@
+countries:
+  - name: USA
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: Acme Corp
+        ticker: AC
+        share_price: 100
+        dividend_yield: 0.02
+      - name: Beta Tech
+        ticker: BT
+        share_price: 50
+        dividend_yield: 0.01
+  - name: Japan
+    tax_rate: 0.15
+    interest_rate: 0.03
+    companies:
+      - name: Nippon Goods
+        ticker: NG
+        share_price: 80
+        dividend_yield: 0.015
+  - name: Germany
+    tax_rate: 0.18
+    interest_rate: 0.04
+    companies:
+      - name: Ordnung AG
+        ticker: ORD
+        share_price: 120
+        dividend_yield: 0.025
