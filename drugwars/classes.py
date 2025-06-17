@@ -1,7 +1,11 @@
+"""Game object models for the Drugwars simulation."""
+
 from random import randint, choice, seed, shuffle
 from .helpers import round_down
 
-class Shark():
+class Shark:
+    """Loan shark tracking the player's debt."""
+
     def __init__(self, player):
         self.player = player
         self.balance = 5500
@@ -33,6 +37,8 @@ class Shark():
         self.balance += amount
 
 class Bank:
+    """Simple interest-bearing account for the player."""
+
     def __init__(self, player):
         self.player = player
         self.balance = 0
@@ -61,6 +67,8 @@ class Bank:
             return False
 
 class Stash:
+    """Storage for excess drugs not carried in the coat."""
+
     def __init__(self, player):
         self.player = player
         self.cocaine = 0
@@ -101,6 +109,8 @@ class Stash:
         return False
 
 class Player:
+    """State of the current player including inventory and money."""
+
     def __init__(self):
         self.is_first_round = True
         self.money = 2000
@@ -172,6 +182,8 @@ class Player:
         self.money += (amount * price)
 
 class Prices:
+    """Generate random drug prices and market events."""
+
     def __init__(self, player):
         seed(randint(-10000, 10000))
         self.player = player
