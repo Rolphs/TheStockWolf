@@ -92,8 +92,165 @@ TheStockWolf/
 ├── requirements.txt
 └── README.md
 
+⸻
+
+## 🌍 Bolsas Nacionales Ficticias en *The Stock Wolf*
+
+| País            | Bolsa Ficticia                                        | Siglas  | Estilo Narrativo / Económico                   |
+|-----------------|--------------------------------------------------------|---------|-----------------------------------------------|
+| 🇲🇽 México        | Bolsa Revolucionaria Nacional                          | BRN     | Posrevolucionaria, nacionalista, clientelar    |
+| 🇨🇺 Cuba          | Bolsa Nacional de Ron y Puros                          | BNRP    | Tropical, planificada, simbólica               |
+| 🇺🇸 EE.UU.        | National Resource Authority                            | NRA     | Extractivista, imperial, lobbycrática          |
+| 🇧🇷 Brasil        | Mercado Federal do Samba e Harmonia                   | MFSAH   | Tropicalista, rítmico, populista               |
+| 🇮🇳 India         | Comisión Estática de Castas                           | CEC     | Estructuralista, rígido, cínico                |
+| 🇷🇺 Rusia         | Ministerio de Transacciones Estratégicas              | MTE     | Oligárquico, beligerante, opaco                |
+| 🇨🇳 China         | Comité para la Prosperidad Ordenada del Pueblo        | CPOP    | Tecnocracia regulada, socialista de mercado    |
+| 🇦🇷 Argentina     | Bolsa de Nieve Maradoniana                            | BdNM    | Volátil, emocional, heroico-trágico            |
+| 🇩🇪 Alemania      | Cámara Germánica de Estabilidad Capitalista           | CGEC    | Ordenada, racional, tecnocrática               |
+| 🇯🇵 Japón         | Instituto Nipón de Precisión Económica                | INPE    | Zen, eficiente, disciplinado                   |
+| 🇿🇦 Sudáfrica     | Foro de Intercambios Minerales de África Austral      | FIMAA   | Extractivo, postcolonial, regionalizado        |
+| 🇸🇦 Arabia Saudita| Fundación de Rentas Sagradas del Desierto             | FRSD    | Teocrático, petrolero, opulento                |
+| 🇸🇬 Singapur      | Autoridad Compacta de Flujo de Capital                 | ACFC    | Neoliberalismo eficiente, aséptico             |
+| 🇨🇭 Suiza         | Centro Helvético de Custodia y Silencio               | CHCS    | Neutra, opaca, elegante                        |
+| 🇰🇷 Corea del Sur | Red Integrada de Capital y Tecnología de Oriente      | RICTO   | Dinámico, digital, industrializado             |
 
 ⸻
+## 📈 Empresas cotizantes por país
+
+### 🇲🇽 México – Bolsa Revolucionaria Nacional (BRN)
+
+| Empresa                                | Ticker | Descripción                                  |
+|----------------------------------------|--------|----------------------------------------------|
+| Petróleos Unidos del Pueblo            | PUP    | Estatal simbólica, atrapada en deuda y discurso |
+| Comercializadora Azteca de Paguitos   | CAP    | Minorista popular, sostenida por créditos imposibles |
+
+---
+
+### 🇨🇺 Cuba – Bolsa Nacional de Ron y Puros (BNRP)
+
+| Empresa                                              | Ticker | Descripción                            |
+|------------------------------------------------------|--------|----------------------------------------|
+| Servicios Médicos Internacionales de la Patria       | SMIP   | Exporta médicos, deuda y reputación     |
+| Cañaverales Unidos de la Revolución                  | CUR    | Azúcar, machete y retórica              |
+
+---
+
+### 🇺🇸 EE.UU. – National Resource Authority (NRA)
+
+| Empresa                         | Ticker | Descripción                                    |
+|----------------------------------|--------|------------------------------------------------|
+| FreedomCloud Defense Systems    | FCDS   | Defensa en la nube, subsidios infinitos        |
+| McCapital Unlimited Inc.        | MCUI   | Todo lo compra, incluso tu empresa             |
+
+---
+
+### 🇧🇷 Brasil – Mercado Federal do Samba e Harmonia (MFSAH)
+
+| Empresa                                   | Ticker | Descripción                                 |
+|-------------------------------------------|--------|---------------------------------------------|
+| Samba Agroexportadora Integrada           | SAI    | Exporta feijoada, café y esperanza           |
+| Minerales & Carnaval Sociedad Anónima     | MiCaSA | Cotiza samba, litio y corrupción local       |
+
+---
+
+### 🇮🇳 India – Comisión Estática de Castas (CEC)
+
+| Empresa                                           | Ticker | Descripción                            |
+|---------------------------------------------------|--------|----------------------------------------|
+| CastaTech Solutions Pvt. Ltd.                    | CTSP   | Software jerárquico para todos los rangos |
+| Bharata Holdings of Ancestral Wealth             | BHAW   | Conglomerado con herencia en código     |
+
+---
+
+### 🇷🇺 Rusia – Ministerio de Transacciones Estratégicas (MTE)
+
+| Empresa                        | Ticker | Descripción                               |
+|--------------------------------|--------|-------------------------------------------|
+| GazComPriv Export JSC          | GCPE   | Petróleo, gas y sanciones                  |
+| SberFuture Artificial Stability| SFAS   | Banca predictiva con vodka neural         |
+
+---
+
+### 🇨🇳 China – Comité para la Prosperidad Ordenada del Pueblo (CPOP)
+
+| Empresa                                              | Ticker | Descripción                               |
+|------------------------------------------------------|--------|-------------------------------------------|
+| Pueblo Digital Unificado S.A.                        | PDU    | Todo está conectado... con el Partido     |
+| Dragón Celeste de Infraestructura Estatal            | DCIE   | Hormigón, acero, datos                     |
+
+---
+
+### 🇦🇷 Argentina – Bolsa de Nieve Maradoniana (BdNM)
+
+| Empresa                                      | Ticker | Descripción                               |
+|----------------------------------------------|--------|-------------------------------------------|
+| Alfajores Bursátiles del Sur S.A.            | ABS    | Dulce de leche cotiza más que el peso     |
+| Litio Emocional Sociedad Anónima             | LESA   | El mineral del futuro con presente ansioso |
+
+---
+
+### 🇩🇪 Alemania – Cámara Germánica de Estabilidad Capitalista (CGEC)
+
+| Empresa                                      | Ticker | Descripción                         |
+|----------------------------------------------|--------|-------------------------------------|
+| Ordnung Maschinenbau AG                      | OMA    | Precisión, eficiencia, exportación  |
+| Banco Federal de Precisión Financiera        | BFPF   | Donde el euro va a disciplinarse    |
+
+---
+
+### 🇯🇵 Japón – Instituto Nipón de Precisión Económica (INPE)
+
+| Empresa                          | Ticker | Descripción                         |
+|----------------------------------|--------|-------------------------------------|
+| Nippon Kikai Zen Corporation     | NKZC   | Robots que meditan y ensamblan      |
+| Sakura Neuralware Co.            | SNC    | IA con honor, eficiencia y sakura   |
+
+---
+
+### 🇿🇦 Sudáfrica – Foro de Intercambios Minerales de África Austral (FIMAA)
+
+| Empresa                          | Ticker | Descripción                                |
+|----------------------------------|--------|--------------------------------------------|
+| PanMinerals SA Holdings Ltd.     | PMSA   | Extrae esperanza de minas profundas        |
+| Ubuntu Energy Transition Inc.    | UETI   | Transición verde con alma africana         |
+
+---
+
+### 🇸🇦 Arabia Saudita – Fundación de Rentas Sagradas del Desierto (FRSD)
+
+| Empresa                                  | Ticker | Descripción                           |
+|------------------------------------------|--------|---------------------------------------|
+| Desierto Profundo Petroleros Ltd.        | DPPL   | Petróleo, desierto y silencio          |
+| Peregrinaje Global de Servicios Hajj     | PGSH   | Religión y logística de lujo           |
+
+---
+
+### 🇸🇬 Singapur – Autoridad Compacta de Flujo de Capital (ACFC)
+
+| Empresa                                | Ticker | Descripción                             |
+|----------------------------------------|--------|-----------------------------------------|
+| Capitales Compactos Asia Pte. Ltd.     | CCAP   | Fondos densos, fríos y eficientes        |
+| Red Financiera Transoceánica           | RFT    | Flujo monetario que nunca se moja        |
+
+---
+
+### 🇨🇭 Suiza – Centro Helvético de Custodia y Silencio (CHCS)
+
+| Empresa                                | Ticker | Descripción                              |
+|----------------------------------------|--------|------------------------------------------|
+| Fondo Eterno de Patrimonio Silente     | FEPS   | Nadie sabe qué hace, pero siempre gana   |
+| Custodia Alpina Unificada SA           | CAUSA  | Guarda secretos en cajas fuertes blancas |
+
+---
+
+### 🇰🇷 Corea del Sur – Red Integrada de Capital y Tecnología de Oriente (RICTO)
+
+| Empresa                                 | Ticker | Descripción                              |
+|-----------------------------------------|--------|------------------------------------------|
+| Tecnología Orientada al Consenso        | TOC    | Firma software donde todos acuerdan      |
+| SeoulQuantum Industrial Holdings        | SQIH   | Microchips con orgullo y café helado     |
+⸻
+
 
 📈 Roadmap futuro
 	•	Simulación basada en redes de oferta y demanda
