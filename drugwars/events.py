@@ -1,11 +1,36 @@
+"""High level game events and menus for the Drugwars text game."""
+
 from terminaltables import SingleTable
-from .helpers import check_ans_yn, clear, round_down, check_ans_bsj, check_drug_inp, get_price
+from .helpers import (
+    check_ans_yn,
+    clear,
+    round_down,
+    check_ans_bsj,
+    check_drug_inp,
+    get_price,
+)
 from .classes import Prices
 from random import randint, choice
 
 
 def cops_for_roll(r):
-    """Return the number of cops chasing based on the roll."""
+    """Return how many cops appear based on ``r``.
+
+    Parameters
+    ----------
+    r : int
+        A random roll between 1 and 10.
+
+    Returns
+    -------
+    int
+        Number of officers that should spawn.
+
+    Examples
+    --------
+    >>> cops_for_roll(10)
+    4
+    """
     if 1 <= r <= 6:
         return 2
     elif 7 <= r <= 9:
@@ -14,6 +39,8 @@ def cops_for_roll(r):
         return 4
 
 def cops_chase(player):
+    """Run the random police chase encounter."""
+
     if 1 == randint(1, 10):
         r = randint(1, 10)
         cops = cops_for_roll(r)
@@ -100,6 +127,8 @@ def cops_chase(player):
 
 
 def ask_bank(player):
+    """Prompt the player about visiting the bank."""
+
     clear()
     while True:
         print(SingleTable([['Would you like to visit the bank?']]).table)
@@ -114,6 +143,8 @@ def ask_bank(player):
             break
 
 def ask_loan_shark(player):
+    """Ask the player if they want to visit the loan shark."""
+
     clear()
     while True:
         print(SingleTable([['Would you like to visit the loan shark?']]).table)
@@ -128,6 +159,8 @@ def ask_loan_shark(player):
             break
 
 def ask_stash(player):
+    """Ask if the player wants to move items to or from their stash."""
+
     clear()
     while True:
         print(SingleTable([['Would you like to stash any drugs?']]).table)
@@ -142,6 +175,8 @@ def ask_stash(player):
             break
 
 def visit_stash(player):
+    """Interactively deposit to or withdraw drugs from the stash."""
+
     stashes = ["cocaine", "heroin", "acid", "weed", "speed", "ludes"]
     for stash in stashes:
         clear()
@@ -179,6 +214,8 @@ def visit_stash(player):
                 print(SingleTable([["That isn't a number!"]]).table)
 
 def visit_bank(player):
+    """Handle depositing to and withdrawing from the bank."""
+
     clear()
     if player.money > 0:
         while True:
@@ -229,6 +266,8 @@ def visit_bank(player):
                 print(SingleTable([["That isn't a number!"]]).table)
 
 def visit_loan_shark(player):
+    """Repay or borrow money from the loan shark."""
+
     clear()
     while True:
         print(SingleTable([['How much would you like to repay?'], ['Debt: ' + str(player.shark.balance) + ' | Wallet: ' + str(player.money)]]).table)
@@ -277,6 +316,8 @@ def visit_loan_shark(player):
             print(SingleTable([["That isn't a number!"]]).table)
 
 def upgrade_coat(p):
+    """Offer the player a trench coat upgrade for additional inventory."""
+
     clear()
     while True:
         price = randint(150, 250)
@@ -303,6 +344,8 @@ def upgrade_coat(p):
             break
 
 def get_mugged(p):
+    """Random chance for the player to lose money to a mugger."""
+
     clear()
     if 1 == randint(1, 8):
         clear()
@@ -312,6 +355,8 @@ def get_mugged(p):
         clear()
 
 def find_drugs(p):
+    """Chance to discover random drugs on the ground."""
+
     clear()
     if 1 == randint(1, 10):
         clear()
@@ -341,6 +386,8 @@ def find_drugs(p):
             input("Press ENTER to Continue")
 
 def buy_gun(p):
+    """Random event offering the player a gun purchase."""
+
     clear()
     if 1 == randint(1, 5):
         clear()
@@ -365,6 +412,8 @@ def buy_gun(p):
             input("Press ENTER to Continue")
 
 def you_win(p):
+    """Display the end screen and final score."""
+
     clear()
     score = int(round_down((p.bank.balance + p.money - p.shark.balance) / 10000000 * 100))
     if score > 100:
@@ -387,6 +436,8 @@ def you_win(p):
     exit()
 
 def buy_menu(prices, inventory_table, pricing_table, money_table, p):
+    """Prompt the player to purchase drugs."""
+
     while True:
         print(SingleTable(inventory_table()).table)
         print(SingleTable(pricing_table(), title="Prices").table)
@@ -438,6 +489,8 @@ def buy_menu(prices, inventory_table, pricing_table, money_table, p):
                 break
 
 def sell_menu(prices, inventory_table, pricing_table, money_table, p):
+    """Allow the player to sell drugs from their inventory."""
+
     while True:
         print(SingleTable(inventory_table()).table)
         print(SingleTable(pricing_table(), title="Prices").table)
@@ -489,6 +542,8 @@ def sell_menu(prices, inventory_table, pricing_table, money_table, p):
                 break
 
 def location_menu(p):
+    """Move the player to a new location."""
+
     while True:
         clear()
         loc_index = ['Bronx', 'Ghetto', 'Central Park', 'Manhattan', 'Coney Island', 'Brooklyn']
@@ -526,6 +581,8 @@ def location_menu(p):
             print(SingleTable([["That isn't a number!"]]).table)
 
 def difficulty_screen():
+    """Select the game's difficulty level."""
+
     clear()
     while True:
         diff_table = [
@@ -546,6 +603,8 @@ def difficulty_screen():
             
     
 def days_screen():
+    """Ask how many in-game days to play."""
+
     clear()
     while True:
         day_table = [
@@ -566,6 +625,8 @@ def days_screen():
 
 
 def main_screen(p):
+    """Main game loop handling actions for the current day."""
+
     prices = Prices(p)
     if p.days == p.days_end:
         you_win(p)
