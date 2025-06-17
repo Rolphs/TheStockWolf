@@ -3,16 +3,20 @@ from .helpers import check_ans_yn, clear, round_down, check_ans_bsj, check_drug_
 from .classes import Prices
 from random import randint, choice
 
+
+def cops_for_roll(r):
+    """Return the number of cops chasing based on the roll."""
+    if 1 <= r <= 6:
+        return 2
+    elif 7 <= r <= 9:
+        return 3
+    else:
+        return 4
+
 def cops_chase(player):
     if 1 == randint(1, 10):
-        cops = 0
         r = randint(1, 10)
-        if r >= 1 or r <= 6:
-            cops = 2
-        elif r >= 7 or r <= 9:
-            cops = 3
-        else:
-            cops = 4
+        cops = cops_for_roll(r)
         print(SingleTable([["Officer Headass and " + str(cops) + " other(s) are chasing you!"]]).table)
         if player.guns >= 1:
             while True:
