@@ -624,44 +624,73 @@ def days_screen():
             print(SingleTable([["Options Are: A, B, or C."]]).table)
 
 
-def main_screen(p):
-    """Main game loop handling actions for the current day."""
+def display_inventory(p, prices):
+    """Return callables that print the player's inventory and money tables."""
 
-    prices = CompanyPrices(p)
-    if p.days == p.days_end:
-        you_win(p)
-    if not p.is_first_round:
-        achoice = choice([lambda p: cops_chase(p), lambda p: buy_gun(p), lambda p: get_mugged(p), lambda p: find_companies(p), lambda p: upgrade_coat(p)])
-        achoice(p)
-    if prices.action != None and not p.is_first_round:
-        print(SingleTable([[prices.action]]).table)
-        input("Press ENTER to Continue")
-    current_area = p.current_area
-    if not p.is_first_round and current_area == "Bronx":
-        clear()
-        ask_loan_shark(p)
-        ask_bank(p)
-        ask_stash(p)
-    while True:
-        clear()
-        inventory_table = lambda : [
+    def inventory_table():
+        return [
             ['Inventory', 'Days Left: ' + str(p.days_end - p.days)],
             ['Cocaine: ' + str(round_down(p.cocaine)), 'Weed: ' + str(round_down(p.weed))],
             ['Heroin: ' + str(round_down(p.heroin)), 'Speed: ' + str(round_down(p.speed))],
             ['Acid: ' + str(round_down(p.acid)), 'Ludes: ' + str(round_down(p.ludes))],
         ]
-        pricing_table = lambda : [
+
+    def pricing_table():
+        return [
             ['Current Area: ' + p.current_area, 'Coat Space: ' + str(p.coat_space()) + " / " + str(p.max_trench)],
             ['Cocaine: ' + str(round_down(prices.cocaine)), 'Weed: ' + str(round_down(prices.weed))],
             ['Heroin: ' + str(round_down(prices.heroin)), 'Speed: ' + str(round_down(prices.speed))],
             ['Acid: ' + str(round_down(prices.acid)), 'Ludes: ' + str(round_down(prices.ludes))]
         ]
-        money_table = lambda : [
-            ['Debt: ' + str(int(round_down(p.shark.balance))) ,'Guns: ' + str(p.guns), 'Bank: ' + str(int(round_down(p.bank.balance))), 'Wallet: ' + str(int(round_down(p.money)))]
+
+    def money_table():
+        return [
+            ['Debt: ' + str(int(round_down(p.shark.balance))),
+             'Guns: ' + str(p.guns),
+             'Bank: ' + str(int(round_down(p.bank.balance))),
+             'Wallet: ' + str(int(round_down(p.money)))]
         ]
-        print(SingleTable(inventory_table()).table)
-        print(SingleTable(pricing_table(), title="Prices").table)
-        print(SingleTable(money_table(), title="Money").table)
+
+    print(SingleTable(inventory_table()).table)
+    print(SingleTable(pricing_table(), title="Prices").table)
+    print(SingleTable(money_table(), title="Money").table)
+
+    return inventory_table, pricing_table, money_table
+
+
+def process_random_events(p, prices):
+    """Run daily random encounters and display any market events."""
+
+    if p.days == p.days_end:
+        you_win(p)
+
+    if not p.is_first_round:
+        achoice = choice([
+            lambda p: cops_chase(p),
+            lambda p: buy_gun(p),
+            lambda p: get_mugged(p),
+            lambda p: find_companies(p),
+            lambda p: upgrade_coat(p)
+        ])
+        achoice(p)
+
+    if prices.action is not None and not p.is_first_round:
+        print(SingleTable([[prices.action]]).table)
+        input("Press ENTER to Continue")
+
+    if not p.is_first_round and p.current_area == "Bronx":
+        clear()
+        ask_loan_shark(p)
+        ask_bank(p)
+        ask_stash(p)
+
+
+def handle_buy_sell(p, prices, starting_area):
+    """Prompt the user to buy, sell or travel until they change location."""
+
+    while True:
+        clear()
+        inventory_table, pricing_table, money_table = display_inventory(p, prices)
         print(SingleTable([["Are you going to (B)uy, (S)ell, or (J)et?"]]).table)
         ans = input("\n> ")
         anout = check_ans_bsj(ans)
@@ -675,8 +704,17 @@ def main_screen(p):
         else:
             clear()
             print(SingleTable([["That isn't an option. Choose B, S, or J"]]).table)
-        if p.current_area != current_area:
+        if p.current_area != starting_area:
             break
+
+
+def main_screen(p):
+    """Main game loop handling actions for the current day."""
+
+    prices = CompanyPrices(p)
+    process_random_events(p, prices)
+    current_area = p.current_area
+    handle_buy_sell(p, prices, current_area)
     p.is_first_round = False
     p.bank.interest()
     p.shark.interest()
