@@ -1,6 +1,11 @@
-from typing import List
+from __future__ import annotations
+
+from typing import List, TYPE_CHECKING
 from ..agents.country import CountryAgent
 from ..agents.market import Market
+
+if TYPE_CHECKING:
+    from ..agents.player import Player
 
 class Simulation:
     def __init__(self, countries: List[CountryAgent], market: Market, players: List['Player']):
