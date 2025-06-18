@@ -48,20 +48,20 @@ def check_company_inp(a):
 
     Examples
     --------
-    >>> check_company_inp('c')
-    'acme'
+    >>> check_company_inp('a')
+    'company_a'
     >>> check_company_inp('x') is None
     True
     """
 
     a = a.lower()
     companies = {
-        "a": "acme",
-        "g": "globex",
-        "i": "initech",
-        "u": "umbrella",
-        "c": "cyberdyne",
-        "s": "soylent",
+        "a": "company_a",
+        "b": "company_b",
+        "c": "company_c",
+        "d": "company_d",
+        "e": "company_e",
+        "f": "company_f",
     }
     if len(a) == 0:
         return None
@@ -96,15 +96,15 @@ def round_down(n, decimals=0):
 def get_price(prices, company):
     """Return the price of ``company`` from a :class:`~drugwars.classes.CompanyPrices` instance."""
 
-    if company == "acme":
-        return prices.acme
-    elif company == "globex":
-        return prices.globex
-    elif company == "initech":
-        return prices.initech
-    elif company == "umbrella":
-        return prices.umbrella
-    elif company == "cyberdyne":
-        return prices.cyberdyne
-    elif company == "soylent":
-        return prices.soylent
+    if company == "company_a":
+        return prices.company_a
+    elif company == "company_b":
+        return prices.company_b
+    elif company == "company_c":
+        return prices.company_c
+    elif company == "company_d":
+        return prices.company_d
+    elif company == "company_e":
+        return prices.company_e
+    elif company == "company_f":
+        return prices.company_f
