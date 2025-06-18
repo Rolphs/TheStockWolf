@@ -32,40 +32,40 @@ def check_ans_yn(a):
     else:
         return 0
 
-def check_drug_inp(a):
-    """Map the user's input to a drug name.
+def check_company_inp(a):
+    """Map the user's input to a company name.
 
     Parameters
     ----------
     a : str
-        Player input representing a drug. Only the first character is used.
+        Player input representing a company. Only the first character is used.
 
     Returns
     -------
     str or None
-        The canonical drug name or ``None`` if the input does not match any
-        known drug.
+        The canonical company name or ``None`` if the input does not match any
+        known company.
 
     Examples
     --------
-    >>> check_drug_inp('c')
-    'cocaine'
-    >>> check_drug_inp('x') is None
+    >>> check_company_inp('c')
+    'acme'
+    >>> check_company_inp('x') is None
     True
     """
 
     a = a.lower()
-    drugs = {
-        "c": "cocaine",
-        "h": "heroin",
-        "a": "acid",
-        "w": "weed",
-        "s": "speed",
-        "l": "ludes",
+    companies = {
+        "a": "acme",
+        "g": "globex",
+        "i": "initech",
+        "u": "umbrella",
+        "c": "cyberdyne",
+        "s": "soylent",
     }
     if len(a) == 0:
         return None
-    for k, v in drugs.items():
+    for k, v in companies.items():
         if k == a[0]:
             return v
     return None
@@ -93,18 +93,18 @@ def round_down(n, decimals=0):
     multiplier = 10 ** decimals
     return int(math.floor(n * multiplier) / multiplier)
 
-def get_price(prices, drug):
-    """Return the price of ``drug`` from a :class:`~drugwars.classes.Prices` instance."""
+def get_price(prices, company):
+    """Return the price of ``company`` from a :class:`~drugwars.classes.CompanyPrices` instance."""
 
-    if drug == "cocaine":
-        return prices.cocaine
-    elif drug == "heroin":
-        return prices.heroin
-    elif drug == "acid":
-        return prices.acid
-    elif drug == "weed":
-        return prices.weed
-    elif drug == "speed":
-        return prices.speed
-    elif drug == "ludes":
-        return prices.ludes
+    if company == "acme":
+        return prices.acme
+    elif company == "globex":
+        return prices.globex
+    elif company == "initech":
+        return prices.initech
+    elif company == "umbrella":
+        return prices.umbrella
+    elif company == "cyberdyne":
+        return prices.cyberdyne
+    elif company == "soylent":
+        return prices.soylent

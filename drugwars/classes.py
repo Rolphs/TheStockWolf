@@ -67,45 +67,45 @@ class Bank:
             return False
 
 class Stash:
-    """Storage for excess drugs not carried in the coat."""
+    """Storage for excess shares not carried in the coat."""
 
     def __init__(self, player):
         self.player = player
-        self.cocaine = 0
-        self.heroin = 0
-        self.acid = 0
-        self.weed = 0
-        self.speed = 0
-        self.ludes = 0
+        self.acme = 0
+        self.globex = 0
+        self.initech = 0
+        self.umbrella = 0
+        self.cyberdyne = 0
+        self.soylent = 0
 
-    def withdraw(self, drug, amount):
-        if hasattr(self.player, drug):
-            dref = getattr(self.player, drug)
-            dref += amount
-            setattr(self.player, drug, dref)
-            sref = getattr(self, drug)
+    def withdraw(self, company, amount):
+        if hasattr(self.player, company):
+            pref = getattr(self.player, company)
+            pref += amount
+            setattr(self.player, company, pref)
+            sref = getattr(self, company)
             sref -= amount
-            setattr(self, drug, sref)
+            setattr(self, company, sref)
 
-    def transfer(self, drug, amount):
-        if hasattr(self.player, drug):
-            dref = getattr(self.player, drug)
-            dref -= amount
-            setattr(self.player, drug, dref)
-            sref = getattr(self, drug)
+    def transfer(self, company, amount):
+        if hasattr(self.player, company):
+            pref = getattr(self.player, company)
+            pref -= amount
+            setattr(self.player, company, pref)
+            sref = getattr(self, company)
             sref += amount
-            setattr(self, drug, sref)
+            setattr(self, company, sref)
     
-    def can_transfer(self, drug, amount):
-        if hasattr(self.player, drug):
-            dref = getattr(self.player, drug)
-            return dref >= amount
+    def can_transfer(self, company, amount):
+        if hasattr(self.player, company):
+            pref = getattr(self.player, company)
+            return pref >= amount
         return False
 
-    def can_withdraw(self, drug, amount):
-        if hasattr(self, drug):
-            dref = getattr(self, drug)
-            return dref >= amount
+    def can_withdraw(self, company, amount):
+        if hasattr(self, company):
+            pref = getattr(self, company)
+            return pref >= amount
         return False
 
 class Player:
@@ -119,92 +119,92 @@ class Player:
         self.days_end = 30
         self.health = 20
         self.max_trench = 100
-        self.cocaine = 0
-        self.heroin = 0
-        self.acid = 0
-        self.weed = 0
-        self.speed = 0
-        self.ludes = 0
+        self.acme = 0
+        self.globex = 0
+        self.initech = 0
+        self.umbrella = 0
+        self.cyberdyne = 0
+        self.soylent = 0
         self.bank = Bank(self)
         self.stash = Stash(self)
         self.shark = Shark(self)
         self.current_area = "Bronx"
     
-    def buy(self, drug, amount, price):
-        dref = getattr(self, drug)
-        dref += amount
-        setattr(self, drug, dref)
+    def buy(self, company, amount, price):
+        pref = getattr(self, company)
+        pref += amount
+        setattr(self, company, pref)
         self.money -= (amount * price)
 
     def len_inventory(self):
-        return (self.cocaine + self.heroin + self.acid + self.weed + self.speed + self.ludes)
+        return (self.acme + self.globex + self.initech + self.umbrella + self.cyberdyne + self.soylent)
 
     def coat_space(self):
-        return self.max_trench - (self.cocaine + self.heroin + self.acid + self.weed + self.speed + self.ludes)
+        return self.max_trench - (self.acme + self.globex + self.initech + self.umbrella + self.cyberdyne + self.soylent)
     
-    def get_max(self, drug, price):
+    def get_max(self, company, price):
         max_amt = int(round_down(self.money / price))
         if max_amt > self.coat_space():
             return self.coat_space()
         else:
             return max_amt
 
-    def get_max_sell(self, drug):
-        if drug == 'cocaine':
-            return self.cocaine
-        elif drug == 'heroin':
-            return self.heroin
-        elif drug == 'acid':
-            return self.acid
-        elif drug == 'weed':
-            return self.weed
-        elif drug == 'speed':
-            return self.speed
-        elif drug == 'ludes':
-            return self.ludes
+    def get_max_sell(self, company):
+        if company == 'acme':
+            return self.acme
+        elif company == 'globex':
+            return self.globex
+        elif company == 'initech':
+            return self.initech
+        elif company == 'umbrella':
+            return self.umbrella
+        elif company == 'cyberdyne':
+            return self.cyberdyne
+        elif company == 'soylent':
+            return self.soylent
 
     def can_buy(self, price, amount):
         return self.money >= (price * amount) and (self.len_inventory() + amount) <= self.max_trench
 
-    def can_sell(self, amount, drug):
-        dref = getattr(self, drug)
-        return dref - amount >= 0
+    def can_sell(self, amount, company):
+        pref = getattr(self, company)
+        return pref - amount >= 0
 
-    def get_amt(self, drug):
-        if hasattr(self, drug):
-            return getattr(self, drug)
+    def get_amt(self, company):
+        if hasattr(self, company):
+            return getattr(self, company)
         return None
 
-    def sell(self, drug, amount, price):
-        dref = getattr(self, drug)
-        dref -= amount
-        setattr(self, drug, dref)
+    def sell(self, company, amount, price):
+        pref = getattr(self, company)
+        pref -= amount
+        setattr(self, company, pref)
         self.money += (amount * price)
 
-class Prices:
-    """Generate random drug prices and market events."""
+class CompanyPrices:
+    """Generate random share prices and place events."""
 
     def __init__(self, player):
         seed(randint(-10000, 10000))
         self.player = player
-        self.cocaine = randint(15000, 29999)
-        self.heroin = randint(5000, 13999)
-        self.acid = randint(1000, 4999)
-        self.weed = randint(300, 899)
-        self.speed = randint(90, 249)
-        self.ludes = randint(10, 89)
+        self.acme = randint(15000, 29999)
+        self.globex = randint(5000, 13999)
+        self.initech = randint(1000, 4999)
+        self.umbrella = randint(300, 899)
+        self.cyberdyne = randint(90, 249)
+        self.soylent = randint(10, 89)
         self.actions = []
         events = [
-            lambda self: self.cops_bust_cocaine(),
-            lambda self: self.addicts_buy_coke(),
-            lambda self: self.cops_bust_heroin(),
-            lambda self: self.addicts_buy_herion(),
-            lambda self: self.cheap_acid(),
-            lambda self: self.cheap_cocaine(),
-            lambda self: self.cheap_heroin(),
-            lambda self: self.cheap_ludes(),
-            lambda self: self.cheap_speed(),
-            lambda self: self.cheap_weed(),
+            lambda self: self.regulators_probe_acme(),
+            lambda self: self.investors_buy_acme(),
+            lambda self: self.regulators_probe_globex(),
+            lambda self: self.investors_buy_globex(),
+            lambda self: self.cheap_initech(),
+            lambda self: self.cheap_acme(),
+            lambda self: self.cheap_globex(),
+            lambda self: self.cheap_soylent(),
+            lambda self: self.cheap_cyberdyne(),
+            lambda self: self.cheap_umbrella(),
         ]
         shuffle(events)
         self.action = None
@@ -218,52 +218,52 @@ class Prices:
         if len(self.actions) > 0:
             self.action = self.actions[0]
     
-    def cops_bust_cocaine(self):
+    def regulators_probe_acme(self):
         if 1 == randint(1, 35):
-            self.cocaine *= 2
-            self.actions.append("** Cops raided a coke house! Prices are rising!!! **")
+            self.acme *= 2
+            self.actions.append("** Regulators investigated Acme! Shares are rising!! **")
 
-    def addicts_buy_coke(self):
+    def investors_buy_acme(self):
         if 1 == randint(1, 35):
-            self.cocaine *= 4
-            self.actions.append("** Cokeheads everywhere are ready to pay. Prices are skyrocketing!! **")
+            self.acme *= 4
+            self.actions.append("** Investors are hyped about Acme. Shares are skyrocketing!! **")
 
-    def cops_bust_heroin(self):
+    def regulators_probe_globex(self):
         if 1 == randint(1, 25):
-            self.heroin *= 2
-            self.actions.append("** Cops raided a heroin kingpin's warehouse! Prices are rising!!! **")
+            self.globex *= 2
+            self.actions.append("** Regulators hit Globex headquarters! Shares are rising!!! **")
 
-    def addicts_buy_herion(self):
+    def investors_buy_globex(self):
         if 1 == randint(1, 35):
-            self.heroin *= 4
-            self.actions.append("** Heroin junkies everywhere need their fix. Prices are skyrocketing!! **")
+            self.globex *= 4
+            self.actions.append("** Traders everywhere want Globex. Shares are skyrocketing!! **")
     
-    def cheap_acid(self):
+    def cheap_initech(self):
         if 1 == randint(1, 25):
-            self.acid /= 4
-            self.actions.append("** Somebody found a reliable method for making acid. It's super cheap! **")
+            self.initech /= 4
+            self.actions.append("** Initech discovered a cost-cutting breakthrough. Shares are cheap! **")
     
-    def cheap_ludes(self):
+    def cheap_soylent(self):
         if 1 == randint(1, 20):
-            self.ludes /= 4
-            self.actions.append("** The pharmacy got robbed! Ludes are extremely cheap **")
+            self.soylent /= 4
+            self.actions.append("** Soylent factory fiasco! Shares are extremely cheap **")
     
-    def cheap_weed(self):
+    def cheap_umbrella(self):
         if 1 == randint(1, 20):
-            self.weed /= 4
-            self.actions.append("** Hempfest time! Weed is basically being handed out! **")
+            self.umbrella /= 4
+            self.actions.append("** Umbrella giveaway promotion! Shares are practically free! **")
 
-    def cheap_heroin(self):
+    def cheap_globex(self):
         if 1 == randint(1, 35):
-            self.heroin /= 4
-            self.actions.append("** Heroin markets are flooded! Prices have dropped!! **")
+            self.globex /= 4
+            self.actions.append("** Globex shares flood the place! Prices have dropped!! **")
 
-    def cheap_cocaine(self):
+    def cheap_acme(self):
         if 1 == randint(1, 40):
-            self.cocaine /= 4
-            self.actions.append("** Holy shit! You found a time machine to the 80s. Coke is cheap! **")
+            self.acme /= 4
+            self.actions.append("** Retro comeback for Acme! Shares are on sale! **")
 
-    def cheap_speed(self):
+    def cheap_cyberdyne(self):
         if 1 == randint(1, 20):
-            self.speed /= 4
-            self.actions.append("** Speed markets are flooded! Prices are dropping! **")
+            self.cyberdyne /= 4
+            self.actions.append("** Cyberdyne expansion stalls. Shares are dropping! **")
