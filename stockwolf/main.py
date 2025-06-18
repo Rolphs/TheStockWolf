@@ -16,7 +16,10 @@ def build_world(data):
     market = Market()
     countries = []
     for cdata in data['countries']:
-        comps = [Company(**comp) for comp in cdata.get('companies', [])]
+        comps = []
+        for comp_data in cdata.get('companies', []):
+            comp_data.setdefault('country', cdata['name'])
+            comps.append(Company(**comp_data))
         country = CountryAgent(name=cdata['name'], tax_rate=cdata['tax_rate'], interest_rate=cdata['interest_rate'])
         for comp in comps:
             market.list_company(comp)
@@ -26,7 +29,7 @@ def build_world(data):
 
 
 def main(path: str = None):
-    path = Path(path or Path(__file__).resolve().parent / 'data' / 'sample.yaml')
+    path = Path(path or Path(__file__).resolve().parent / 'data' / 'official.yaml')
     data = load_data(path)
     countries, market, players = build_world(data)
     sim = Simulation(countries, market, players)
