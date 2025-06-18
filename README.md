@@ -60,15 +60,14 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python -m stockwolf.main
 
-
-⸻
+---
 
 🎮 ¿Qué hace el jugador?
-	•	Invierte en empresas multinacionales.
-	•	Observa y manipula mercados en diferentes países.
-	•	Compite contra otros jugadores controlados por IA.
-	•	Adquiere información parcial, predice movimientos, reacciona a eventos.
-	•	Puede especializarse como fondo indexado, fondo buitre, banco global, etc.
+### Invierte en empresas multinacionales.
+### Observa y manipula mercados en diferentes países.
+### Compite contra otros jugadores controlados por IA.
+### Adquiere información parcial, predice movimientos, reacciona a eventos.
+### Puede especializarse como fondo indexado, fondo buitre, banco global, etc.
 
 ⸻
 
