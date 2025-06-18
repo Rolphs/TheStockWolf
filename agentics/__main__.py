@@ -1,5 +1,5 @@
-from drugwars.events import *
-from drugwars.classes import Player
+from agentics.events import *
+from agentics.classes import Player
 
 def main():
     clear()

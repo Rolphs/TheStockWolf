@@ -58,7 +58,7 @@ cd TheStockWolf
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python main.py
+python -m stockwolf.main
 
 
 ⸻
@@ -88,7 +88,8 @@ TheStockWolf/
 ├── engine/           # simulation.py, event_system.py
 ├── interface/        # gui.py, dashboard.py
 ├── data/             # Configuración de países y empresas
-├── main.py           # Entry point del juego
+├── stockwolf/
+│   └── main.py       # Entry point del juego
 ├── requirements.txt
 └── README.md
 

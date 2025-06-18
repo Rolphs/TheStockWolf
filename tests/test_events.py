@@ -3,7 +3,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from drugwars import events
+from agentics import events
 
 @pytest.mark.parametrize("r,expected", [
     (1,2), (2,2), (3,2), (4,2), (5,2), (6,2),
