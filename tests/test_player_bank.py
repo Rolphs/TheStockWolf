@@ -10,16 +10,16 @@ from drugwars.helpers import round_down
 
 def test_player_buy_updates_inventory_and_money():
     p = Player()
-    p.buy('company_d', 5, 10)
-    assert p.company_d == 5
+    p.buy('umbrella', 5, 10)
+    assert p.umbrella == 5
     assert p.money == 2000 - 5 * 10
 
 
 def test_player_sell_updates_inventory_and_money():
     p = Player()
-    p.company_d = 8
-    p.sell('company_d', 3, 20)
-    assert p.company_d == 5
+    p.umbrella = 8
+    p.sell('umbrella', 3, 20)
+    assert p.umbrella == 5
     assert p.money == 2000 + 3 * 20
 
 

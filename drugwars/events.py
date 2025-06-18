@@ -52,7 +52,7 @@ def cops_chase(player):
                 aout = check_ans_yn(a)
                 if aout == 1:
                     if 1 == randint(1,3):
-                        company = choice(["company_a", "company_b", "company_c", "company_d", "company_e", "company_f"])
+                        company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
                         pc = player.get_amt(company)
                         if pc > 0:
                             amnt = randint(1, 10)
@@ -69,7 +69,7 @@ def cops_chase(player):
                             clear()
                             print(SingleTable([["You got hit by one of their shots and lost some health!"]]).table)
                         else:
-                            company = choice(["company_a", "company_b", "company_c", "company_d", "company_e", "company_f"])
+                            company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
                             pc = player.get_amt(company)
                             if pc > 0:
                                 amnt = randint(1, 10)
@@ -84,7 +84,7 @@ def cops_chase(player):
                     if 1 == randint(1,6):
                         cops -= 1
                         if cops == 0:
-                            company = choice(["company_a", "company_b", "company_c", "company_d", "company_e", "company_f"])
+                            company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
                             pc = player.get_amt(company)
                             if pc > 0:
                                 amnt = randint(1, 10)
@@ -106,7 +106,7 @@ def cops_chase(player):
                 print(SingleTable([["Press ENTER to Try and Run"], ["HP: " + str(player.health) + "/ 20"]]).table)
                 input()
                 if 1 == randint(1,3):
-                    company = choice(["company_a", "company_b", "company_c", "company_d", "company_e", "company_f"])
+                    company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
                     pc = player.get_amt(company)
                     if pc > 0:
                         amnt = randint(1, 10)
@@ -177,7 +177,7 @@ def ask_stash(player):
 def visit_stash(player):
     """Interactively deposit to or withdraw shares from the stash."""
 
-    stashes = ["company_a", "company_b", "company_c", "company_d", "company_e", "company_f"]
+    stashes = ["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"]
     for stash in stashes:
         clear()
         while True:
@@ -365,23 +365,23 @@ def find_companies(p):
         cstr = ""
         if p.len_inventory() + amnt <= p.max_trench:
             if choice_num == 1:
-                cstr = "Company A"
-                p.company_a += amnt
+                cstr = "Acme"
+                p.acme += amnt
             if choice_num == 2:
-                cstr = "Company B"
-                p.company_b += amnt
+                cstr = "Globex"
+                p.globex += amnt
             if choice_num == 3:
-                cstr = "Company C"
-                p.company_c += amnt
+                cstr = "Initech"
+                p.initech += amnt
             if choice_num == 4:
-                cstr = "Company D"
-                p.company_d += amnt
+                cstr = "Umbrella"
+                p.umbrella += amnt
             if choice_num == 5:
-                cstr = "Company E"
-                p.company_e += amnt
+                cstr = "Cyberdyne"
+                p.cyberdyne += amnt
             if choice_num == 6:
-                cstr = "Company F"
-                p.company_f += amnt
+                cstr = "Soylent"
+                p.soylent += amnt
             print(SingleTable([["You found " + str(amnt) + " shares of " + cstr + " on the ground... \n NICE"]]).table)
             input("Press ENTER to Continue")
 
@@ -646,15 +646,15 @@ def main_screen(p):
         clear()
         inventory_table = lambda : [
             ['Inventory', 'Days Left: ' + str(p.days_end - p.days)],
-            ['Company A: ' + str(round_down(p.company_a)), 'Company B: ' + str(round_down(p.company_b))],
-            ['Company C: ' + str(round_down(p.company_c)), 'Company D: ' + str(round_down(p.company_d))],
-            ['Company E: ' + str(round_down(p.company_e)), 'Company F: ' + str(round_down(p.company_f))],
+            ['Cocaine: ' + str(round_down(p.cocaine)), 'Weed: ' + str(round_down(p.weed))],
+            ['Heroin: ' + str(round_down(p.heroin)), 'Speed: ' + str(round_down(p.speed))],
+            ['Acid: ' + str(round_down(p.acid)), 'Ludes: ' + str(round_down(p.ludes))],
         ]
         pricing_table = lambda : [
             ['Current Area: ' + p.current_area, 'Coat Space: ' + str(p.coat_space()) + " / " + str(p.max_trench)],
-            ['Company A: ' + str(round_down(prices.company_a)), 'Company B: ' + str(round_down(prices.company_b))],
-            ['Company C: ' + str(round_down(prices.company_c)), 'Company D: ' + str(round_down(prices.company_d))],
-            ['Company E: ' + str(round_down(prices.company_e)), 'Company F: ' + str(round_down(prices.company_f))]
+            ['Cocaine: ' + str(round_down(prices.cocaine)), 'Weed: ' + str(round_down(prices.weed))],
+            ['Heroin: ' + str(round_down(prices.heroin)), 'Speed: ' + str(round_down(prices.speed))],
+            ['Acid: ' + str(round_down(prices.acid)), 'Ludes: ' + str(round_down(prices.ludes))]
         ]
         money_table = lambda : [
             ['Debt: ' + str(int(round_down(p.shark.balance))) ,'Guns: ' + str(p.guns), 'Bank: ' + str(int(round_down(p.bank.balance))), 'Wallet: ' + str(int(round_down(p.money)))]
