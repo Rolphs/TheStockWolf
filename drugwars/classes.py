@@ -71,12 +71,12 @@ class Stash:
 
     def __init__(self, player):
         self.player = player
-        self.acme = 0
-        self.globex = 0
-        self.initech = 0
-        self.umbrella = 0
-        self.cyberdyne = 0
-        self.soylent = 0
+        self.company_a = 0
+        self.company_b = 0
+        self.company_c = 0
+        self.company_d = 0
+        self.company_e = 0
+        self.company_f = 0
 
     def withdraw(self, company, amount):
         if hasattr(self.player, company):
@@ -119,12 +119,12 @@ class Player:
         self.days_end = 30
         self.health = 20
         self.max_trench = 100
-        self.acme = 0
-        self.globex = 0
-        self.initech = 0
-        self.umbrella = 0
-        self.cyberdyne = 0
-        self.soylent = 0
+        self.company_a = 0
+        self.company_b = 0
+        self.company_c = 0
+        self.company_d = 0
+        self.company_e = 0
+        self.company_f = 0
         self.bank = Bank(self)
         self.stash = Stash(self)
         self.shark = Shark(self)
@@ -137,10 +137,10 @@ class Player:
         self.money -= (amount * price)
 
     def len_inventory(self):
-        return (self.acme + self.globex + self.initech + self.umbrella + self.cyberdyne + self.soylent)
+        return (self.company_a + self.company_b + self.company_c + self.company_d + self.company_e + self.company_f)
 
     def coat_space(self):
-        return self.max_trench - (self.acme + self.globex + self.initech + self.umbrella + self.cyberdyne + self.soylent)
+        return self.max_trench - (self.company_a + self.company_b + self.company_c + self.company_d + self.company_e + self.company_f)
     
     def get_max(self, company, price):
         max_amt = int(round_down(self.money / price))
@@ -150,18 +150,10 @@ class Player:
             return max_amt
 
     def get_max_sell(self, company):
-        if company == 'acme':
-            return self.acme
-        elif company == 'globex':
-            return self.globex
-        elif company == 'initech':
-            return self.initech
-        elif company == 'umbrella':
-            return self.umbrella
-        elif company == 'cyberdyne':
-            return self.cyberdyne
-        elif company == 'soylent':
-            return self.soylent
+        """Return how many shares of ``company`` the player holds."""
+        if hasattr(self, company):
+            return getattr(self, company)
+        return 0
 
     def can_buy(self, price, amount):
         return self.money >= (price * amount) and (self.len_inventory() + amount) <= self.max_trench
@@ -187,24 +179,24 @@ class CompanyPrices:
     def __init__(self, player):
         seed(randint(-10000, 10000))
         self.player = player
-        self.acme = randint(15000, 29999)
-        self.globex = randint(5000, 13999)
-        self.initech = randint(1000, 4999)
-        self.umbrella = randint(300, 899)
-        self.cyberdyne = randint(90, 249)
-        self.soylent = randint(10, 89)
+        self.company_a = randint(15000, 29999)
+        self.company_b = randint(5000, 13999)
+        self.company_c = randint(1000, 4999)
+        self.company_d = randint(300, 899)
+        self.company_e = randint(90, 249)
+        self.company_f = randint(10, 89)
         self.actions = []
         events = [
-            lambda self: self.regulators_probe_acme(),
-            lambda self: self.investors_buy_acme(),
-            lambda self: self.regulators_probe_globex(),
-            lambda self: self.investors_buy_globex(),
-            lambda self: self.cheap_initech(),
-            lambda self: self.cheap_acme(),
-            lambda self: self.cheap_globex(),
-            lambda self: self.cheap_soylent(),
-            lambda self: self.cheap_cyberdyne(),
-            lambda self: self.cheap_umbrella(),
+            lambda self: self.regulators_probe_company_a(),
+            lambda self: self.investors_buy_company_a(),
+            lambda self: self.regulators_probe_company_b(),
+            lambda self: self.investors_buy_company_b(),
+            lambda self: self.cheap_company_c(),
+            lambda self: self.cheap_company_a(),
+            lambda self: self.cheap_company_b(),
+            lambda self: self.cheap_company_f(),
+            lambda self: self.cheap_company_e(),
+            lambda self: self.cheap_company_d(),
         ]
         shuffle(events)
         self.action = None
@@ -218,52 +210,52 @@ class CompanyPrices:
         if len(self.actions) > 0:
             self.action = self.actions[0]
     
-    def regulators_probe_acme(self):
+    def regulators_probe_company_a(self):
         if 1 == randint(1, 35):
-            self.acme *= 2
-            self.actions.append("** Regulators investigated Acme! Shares are rising!! **")
+            self.company_a *= 2
+            self.actions.append("** Regulators investigated Company A! Shares are rising!! **")
 
-    def investors_buy_acme(self):
+    def investors_buy_company_a(self):
         if 1 == randint(1, 35):
-            self.acme *= 4
-            self.actions.append("** Investors are hyped about Acme. Shares are skyrocketing!! **")
+            self.company_a *= 4
+            self.actions.append("** Investors are hyped about Company A. Shares are skyrocketing!! **")
 
-    def regulators_probe_globex(self):
+    def regulators_probe_company_b(self):
         if 1 == randint(1, 25):
-            self.globex *= 2
-            self.actions.append("** Regulators hit Globex headquarters! Shares are rising!!! **")
+            self.company_b *= 2
+            self.actions.append("** Regulators hit Company B headquarters! Shares are rising!!! **")
 
-    def investors_buy_globex(self):
+    def investors_buy_company_b(self):
         if 1 == randint(1, 35):
-            self.globex *= 4
-            self.actions.append("** Traders everywhere want Globex. Shares are skyrocketing!! **")
+            self.company_b *= 4
+            self.actions.append("** Traders everywhere want Company B. Shares are skyrocketing!! **")
     
-    def cheap_initech(self):
+    def cheap_company_c(self):
         if 1 == randint(1, 25):
-            self.initech /= 4
-            self.actions.append("** Initech discovered a cost-cutting breakthrough. Shares are cheap! **")
+            self.company_c /= 4
+            self.actions.append("** Company C discovered a cost-cutting breakthrough. Shares are cheap! **")
     
-    def cheap_soylent(self):
+    def cheap_company_f(self):
         if 1 == randint(1, 20):
-            self.soylent /= 4
-            self.actions.append("** Soylent factory fiasco! Shares are extremely cheap **")
+            self.company_f /= 4
+            self.actions.append("** Company F factory fiasco! Shares are extremely cheap **")
     
-    def cheap_umbrella(self):
+    def cheap_company_d(self):
         if 1 == randint(1, 20):
-            self.umbrella /= 4
-            self.actions.append("** Umbrella giveaway promotion! Shares are practically free! **")
+            self.company_d /= 4
+            self.actions.append("** Company D giveaway promotion! Shares are practically free! **")
 
-    def cheap_globex(self):
+    def cheap_company_b(self):
         if 1 == randint(1, 35):
-            self.globex /= 4
-            self.actions.append("** Globex shares flood the place! Prices have dropped!! **")
+            self.company_b /= 4
+            self.actions.append("** Company B shares flood the place! Prices have dropped!! **")
 
-    def cheap_acme(self):
+    def cheap_company_a(self):
         if 1 == randint(1, 40):
-            self.acme /= 4
-            self.actions.append("** Retro comeback for Acme! Shares are on sale! **")
+            self.company_a /= 4
+            self.actions.append("** Retro comeback for Company A! Shares are on sale! **")
 
-    def cheap_cyberdyne(self):
+    def cheap_company_e(self):
         if 1 == randint(1, 20):
-            self.cyberdyne /= 4
-            self.actions.append("** Cyberdyne expansion stalls. Shares are dropping! **")
+            self.company_e /= 4
+            self.actions.append("** Company E expansion stalls. Shares are dropping! **")
