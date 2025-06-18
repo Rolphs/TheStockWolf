@@ -6,10 +6,10 @@ from .helpers import (
     clear,
     round_down,
     check_ans_bsj,
-    check_drug_inp,
+    check_company_inp,
     get_price,
 )
-from .classes import Prices
+from .classes import CompanyPrices
 from random import randint, choice
 
 
@@ -52,13 +52,13 @@ def cops_chase(player):
                 aout = check_ans_yn(a)
                 if aout == 1:
                     if 1 == randint(1,3):
-                        drug = choice(["cocaine", "heroin", "acid", "weed", "speed", "ludes"])
-                        pdrug = player.get_amt(drug)
-                        if pdrug > 0:
+                        company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
+                        pc = player.get_amt(company)
+                        if pc > 0:
                             amnt = randint(1, 10)
-                            pdrug -= amnt
+                            pc -= amnt
                             clear()
-                            print(SingleTable([["You got away but you dropped " + str(amnt) + " bags of " + drug.capitalize() + " while running!!"]]).table)
+                            print(SingleTable([["You got away but you dropped " + str(amnt) + " shares of " + company.capitalize() + " while running!!"]]).table)
                         else:
                             print(SingleTable([["You got away!"]]).table)
                         input("Press ENTER to Continue")
@@ -69,13 +69,13 @@ def cops_chase(player):
                             clear()
                             print(SingleTable([["You got hit by one of their shots and lost some health!"]]).table)
                         else:
-                            drug = choice(["cocaine", "heroin", "acid", "weed", "speed", "ludes"])
-                            pdrug = player.get_amt(drug)
-                            if pdrug > 0:
+                            company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
+                            pc = player.get_amt(company)
+                            if pc > 0:
                                 amnt = randint(1, 10)
-                                pdrug -= amnt
+                                pc -= amnt
                                 clear()
-                                print(SingleTable([["You got away but you dropped " + str(amnt) + " bags of " + drug.capitalize() + " while running!!"]]).table)
+                                print(SingleTable([["You got away but you dropped " + str(amnt) + " shares of " + company.capitalize() + " while running!!"]]).table)
                             else:
                                 print(SingleTable([["You got away!"]]).table)
                             input("Press ENTER to Continue")
@@ -84,13 +84,13 @@ def cops_chase(player):
                     if 1 == randint(1,6):
                         cops -= 1
                         if cops == 0:
-                            drug = choice(["cocaine", "heroin", "acid", "weed", "speed", "ludes"])
-                            pdrug = player.get_amt(drug)
-                            if pdrug > 0:
+                            company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
+                            pc = player.get_amt(company)
+                            if pc > 0:
                                 amnt = randint(1, 10)
-                                pdrug -= amnt
+                                pc -= amnt
                                 clear()
-                                print(SingleTable([["You got away but you dropped " + str(amnt) + " bags of " + drug.capitalize() + " while running!!"]]).table)
+                                print(SingleTable([["You got away but you dropped " + str(amnt) + " shares of " + company.capitalize() + " while running!!"]]).table)
                             else:
                                 print(SingleTable([["You got away!"]]).table)
                             input("Press ENTER to Continue")
@@ -106,13 +106,13 @@ def cops_chase(player):
                 print(SingleTable([["Press ENTER to Try and Run"], ["HP: " + str(player.health) + "/ 20"]]).table)
                 input()
                 if 1 == randint(1,3):
-                    drug = choice(["cocaine", "heroin", "acid", "weed", "speed", "ludes"])
-                    pdrug = player.get_amt(drug)
-                    if pdrug > 0:
+                    company = choice(["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"])
+                    pc = player.get_amt(company)
+                    if pc > 0:
                         amnt = randint(1, 10)
-                        pdrug -= amnt
+                        pc -= amnt
                         clear()
-                        print(SingleTable([["You got away but you dropped " + str(amnt) + " bags of " + drug.capitalize() + " while running!!"]]).table)
+                        print(SingleTable([["You got away but you dropped " + str(amnt) + " shares of " + company.capitalize() + " while running!!"]]).table)
                     else:
                         print(SingleTable([["You got away!"]]).table)
                     input("Press ENTER to Continue")
@@ -163,7 +163,7 @@ def ask_stash(player):
 
     clear()
     while True:
-        print(SingleTable([['Would you like to stash any drugs?']]).table)
+        print(SingleTable([['Would you like to stash any shares?']]).table)
         ans = input("\n> ")
         aout = check_ans_yn(ans)
         if aout == 1:
@@ -175,9 +175,9 @@ def ask_stash(player):
             break
 
 def visit_stash(player):
-    """Interactively deposit to or withdraw drugs from the stash."""
+    """Interactively deposit to or withdraw shares from the stash."""
 
-    stashes = ["cocaine", "heroin", "acid", "weed", "speed", "ludes"]
+    stashes = ["acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"]
     for stash in stashes:
         clear()
         while True:
@@ -322,7 +322,7 @@ def upgrade_coat(p):
     while True:
         price = randint(150, 250)
         if p.money >= price:
-            print(SingleTable([["** Would you like to buy 15 more pockets for more drugs? It's $" + str(price) + " **"], ["Wallet: ", p.money]]).table)
+            print(SingleTable([["** Would you like to buy 15 more pockets for more shares? It's $" + str(price) + " **"], ["Wallet: ", p.money]]).table)
             a = input("\n> ")
             ao = check_ans_yn(a)
             if ao == 1:
@@ -354,35 +354,35 @@ def get_mugged(p):
         input("Press ENTER to Continue")
         clear()
 
-def find_drugs(p):
-    """Chance to discover random drugs on the ground."""
+def find_companies(p):
+    """Chance to discover random shares on the ground."""
 
     clear()
     if 1 == randint(1, 10):
         clear()
         amnt = randint(1, 10)
-        drug = randint(1, 8)
-        dstr = ""
+        choice_num = randint(1, 6)
+        cstr = ""
         if p.len_inventory() + amnt <= p.max_trench:
-            if drug == 1:
-                dstr = "Cocaine"
-                p.cocaine += amnt
-            if drug == 2:
-                dstr = "Heroin"
-                p.heroin += amnt
-            if drug == 3:
-                dstr = "Acid"
-                p.acid += amnt
-            if drug == 4:
-                dstr = "Weed"
-                p.weed += amnt
-            if drug == 5:
-                dstr = "Speed"
-                p.speed += amnt
-            if drug == 6:
-                dstr = "Ludes"
-                p.ludes += amnt
-            print(SingleTable([["You found " + str(amnt) + " bags of " + dstr + " on the ground... \n FUCK YEAH"]]).table)
+            if choice_num == 1:
+                cstr = "Acme"
+                p.acme += amnt
+            if choice_num == 2:
+                cstr = "Globex"
+                p.globex += amnt
+            if choice_num == 3:
+                cstr = "Initech"
+                p.initech += amnt
+            if choice_num == 4:
+                cstr = "Umbrella"
+                p.umbrella += amnt
+            if choice_num == 5:
+                cstr = "Cyberdyne"
+                p.cyberdyne += amnt
+            if choice_num == 6:
+                cstr = "Soylent"
+                p.soylent += amnt
+            print(SingleTable([["You found " + str(amnt) + " shares of " + cstr + " on the ground... \n NICE"]]).table)
             input("Press ENTER to Continue")
 
 def buy_gun(p):
@@ -436,7 +436,7 @@ def you_win(p):
     exit()
 
 def buy_menu(prices, inventory_table, pricing_table, money_table, p):
-    """Prompt the player to purchase drugs."""
+    """Prompt the player to purchase shares."""
 
     while True:
         print(SingleTable(inventory_table()).table)
@@ -444,14 +444,14 @@ def buy_menu(prices, inventory_table, pricing_table, money_table, p):
         print(SingleTable(money_table(), title="Money").table)
         print(SingleTable([["What would you like to buy?"]]).table)
         desired = input("\n> ")
-        if not check_drug_inp(desired):
+        if not check_company_inp(desired):
             clear()
-            print(SingleTable([["Enter the first letter of a drug to choose!"]]).table)
+            print(SingleTable([["Enter the first letter of a company to choose!"]]).table)
         else:
             # Get some useful variables that will clean up the code a lot
-            drug = check_drug_inp(desired)
-            price = round_down(get_price(prices, drug))
-            max_allowed = p.get_max(drug, price)
+            company = check_company_inp(desired)
+            price = round_down(get_price(prices, company))
+            max_allowed = p.get_max(company, price)
             
             print(SingleTable([["How much would you like to buy?"], [f"Max Allowed: {str(max_allowed)}"]]).table)
             desiredamnt = input("\n> ")
@@ -477,11 +477,11 @@ def buy_menu(prices, inventory_table, pricing_table, money_table, p):
                         print(SingleTable([["That isn't a valid amount!"]]).table)
                         continue
             
-            # Buy the drug
+            # Buy the company
             if p.can_buy(price, amnt):
-                p.buy(drug, amnt, price)
+                p.buy(company, amnt, price)
                 clear()
-                print(SingleTable([[f"You bought {str(amnt)} of {drug}!"]]).table)
+                print(SingleTable([[f"You bought {str(amnt)} shares of {company}!"]]).table)
                 break
             else:
                 clear()
@@ -489,7 +489,7 @@ def buy_menu(prices, inventory_table, pricing_table, money_table, p):
                 break
 
 def sell_menu(prices, inventory_table, pricing_table, money_table, p):
-    """Allow the player to sell drugs from their inventory."""
+    """Allow the player to sell shares from their inventory."""
 
     while True:
         print(SingleTable(inventory_table()).table)
@@ -497,16 +497,16 @@ def sell_menu(prices, inventory_table, pricing_table, money_table, p):
         print(SingleTable(money_table(), title="Money").table)
         print(SingleTable([["What would you like to sell?"]]).table)
         desired = input("\n> ")
-        if not check_drug_inp(desired):
+        if not check_company_inp(desired):
             clear()
-            print(SingleTable([["Enter the first letter of a drug to choose!"]]).table)
+            print(SingleTable([["Enter the first letter of a company to choose!"]]).table)
         else:
             # Get some useful variables that will clean up the code a lot
-            drug = check_drug_inp(desired)
-            price = round_down(get_price(prices, drug))
-            max_allowed = p.get_max_sell(drug)
+            company = check_company_inp(desired)
+            price = round_down(get_price(prices, company))
+            max_allowed = p.get_max_sell(company)
 
-            print(SingleTable([["How much would you like to sell?"], [f"You have: {str(p.get_amt(drug))} {drug}"]]).table)
+            print(SingleTable([["How much would you like to sell?"], [f"You have: {str(p.get_amt(company))} {company}"]]).table)
             desiredamnt = input("\n> ")
 
             # Calculate amount
@@ -530,15 +530,15 @@ def sell_menu(prices, inventory_table, pricing_table, money_table, p):
                         print(SingleTable([["That isn't a valid amount!"]]).table)
                         continue
 
-            # Sell the drug
-            if p.can_sell(amnt, drug):
-                p.sell(drug, amnt, price)
+            # Sell the company
+            if p.can_sell(amnt, company):
+                p.sell(company, amnt, price)
                 clear()
-                print(SingleTable([[f"You sold {str(amnt)} of {drug}!"]]).table)
+                print(SingleTable([[f"You sold {str(amnt)} shares of {company}!"]]).table)
                 break
             else:
                 clear()
-                print(SingleTable([["You don't have that many drugs!"]]).table)
+                print(SingleTable([["You don't have that many shares!"]]).table)
                 break
 
 def location_menu(p):
@@ -627,11 +627,11 @@ def days_screen():
 def main_screen(p):
     """Main game loop handling actions for the current day."""
 
-    prices = Prices(p)
+    prices = CompanyPrices(p)
     if p.days == p.days_end:
         you_win(p)
     if not p.is_first_round:
-        achoice = choice([lambda p: cops_chase(p), lambda p: buy_gun(p), lambda p: get_mugged(p), lambda p: find_drugs(p), lambda p: upgrade_coat(p)])
+        achoice = choice([lambda p: cops_chase(p), lambda p: buy_gun(p), lambda p: get_mugged(p), lambda p: find_companies(p), lambda p: upgrade_coat(p)])
         achoice(p)
     if prices.action != None and not p.is_first_round:
         print(SingleTable([[prices.action]]).table)
