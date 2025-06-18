@@ -1,5 +1,11 @@
+from __future__ import annotations
+
 from dataclasses import dataclass, field
-from typing import Dict
+from typing import Dict, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .company import Company
+    from .market import Market
 
 @dataclass
 class Player:
