@@ -4,8 +4,8 @@ import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from drugwars.classes import Player
-from drugwars.helpers import round_down
+from agentics.classes import Player
+from agentics.helpers import round_down
 
 
 def test_player_buy_updates_inventory_and_money():

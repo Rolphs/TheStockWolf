@@ -94,7 +94,7 @@ def round_down(n, decimals=0):
     return int(math.floor(n * multiplier) / multiplier)
 
 def get_price(prices, company):
-    """Return the price of ``company`` from a :class:`~drugwars.classes.CompanyPrices` instance."""
+    """Return the price of ``company`` from a :class:`~agentics.classes.CompanyPrices` instance."""
 
     if company == "acme":
         return prices.acme
