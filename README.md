@@ -116,7 +116,6 @@ TheStockWolf/
 | 🇰🇷 Corea del Sur | Red Integrada de Capital y Tecnología de Oriente      | RICTO   | Dinámico, digital, industrializado             |
 
 ⸻
-## 📈 Empresas cotizantes por país
 
 ## 📈 Empresas cotizantes por país
 
@@ -154,6 +153,52 @@ TheStockWolf/
 | 🇰🇷 Corea del Sur | SeoulQuantum Industrial Holdings               | SQIH   | Microchips con orgullo y café helado                  |
 ⸻
 
+## 🧠 Sistema de agentes en *The Stock Wolf*
+
+El juego está diseñado como una simulación económica emergente basada en agentes autónomos que interactúan entre sí. Cada tipo de agente tiene objetivos, reglas y consecuencias diferentes.
+
+### 🧬 Tipos de agentes y su función
+
+| Tipo de Agente      | Ejemplos / Nombres                     | Cantidad | Rol principal |
+|---------------------|----------------------------------------|----------|----------------|
+| `CountryAgent`      | México, China, Argentina…              | 15       | Define política económica, regula su mercado local |
+| `CompanyAgent`      | PUP, MCUI, CAP, etc.                   | 30       | Actúan en bolsa, crecen, colapsan, pagan dividendos |
+| `RegulatorAgent`    | Entidades fiscales globales, auditores| 5        | Detectan manipulación, sancionan, estabilizan |
+| `BankAgent`         | FMI, Banco Mundial, BancEx, EcoFund…  | 5        | Prestan, rescatan y condicionan países o jugadores |
+| `PlayerAgent`       | Jugadores IA (competencia)            | 5        | Compiten contigo con estrategias y metas propias |
+
+**Total: 60 agentes activos en el ecosistema.**
+
+---
+
+### 🏗️ Arquitectura de código modular
+
+Los agentes están organizados en archivos independientes, permitiendo extender o modificar cada comportamiento de manera aislada:
+
+TheStockWolf/
+├── agents/
+│   ├── country.py         # Lógica de países
+│   ├── company.py         # Lógica empresarial
+│   ├── regulator.py       # Agencias de control
+│   ├── bank.py            # Bancos internacionales
+│   ├── player.py          # Jugadores IA
+├── engine/
+│   ├── simulation.py      # Motor principal de ticks
+│   ├── events.py          # Sistema de eventos globales
+├── data/
+│   ├── countries.json     # Configuración de países
+│   ├── companies.json     # Empresas cotizantes
+│   ├── banks.json         # Bancos e instituciones
+│   ├── regulators.json    # Autoridades fiscales
+│   ├── players.json       # Rivales IA
+├── main.py                # Script para ejecutar simulación
+
+---
+
+Cada agente evoluciona a través de ciclos (ticks), toma decisiones basadas en su contexto y puede interactuar con otros agentes de forma directa o mediada por el mercado.
+
+
+⸻
 
 📈 Roadmap futuro
 	•	Simulación basada en redes de oferta y demanda
