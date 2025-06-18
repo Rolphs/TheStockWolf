@@ -12,6 +12,7 @@ class Company:
     ticker: str
     share_price: float
     dividend_yield: float = 0.0
+    country: str | None = None
 
     def pay_dividend(self, player: 'Player') -> float:
         """Return dividend amount for one share."""

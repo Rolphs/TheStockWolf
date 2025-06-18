@@ -1,0 +1,212 @@
+# Official countries and companies derived from README.md
+countries:
+  - name: Mexico
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Petróleos Unidos del Pueblo'
+        ticker: PUP
+        share_price: 100
+        dividend_yield: 0.02
+        country: Mexico
+      - name: 'Comercializadora Azteca de Paguitos'
+        ticker: CAP
+        share_price: 90
+        dividend_yield: 0.02
+        country: Mexico
+  - name: Cuba
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Servicios Médicos Internacionales de la Patria'
+        ticker: SMIP
+        share_price: 95
+        dividend_yield: 0.02
+        country: Cuba
+      - name: 'Cañaverales Unidos de la Revolución'
+        ticker: CUR
+        share_price: 85
+        dividend_yield: 0.02
+        country: Cuba
+  - name: 'EE.UU.'
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'FreedomCloud Defense Systems'
+        ticker: FCDS
+        share_price: 120
+        dividend_yield: 0.03
+        country: 'EE.UU.'
+      - name: 'McCapital Unlimited Inc.'
+        ticker: MCUI
+        share_price: 110
+        dividend_yield: 0.03
+        country: 'EE.UU.'
+  - name: Brasil
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Samba Agroexportadora Integrada'
+        ticker: SAI
+        share_price: 80
+        dividend_yield: 0.02
+        country: Brasil
+      - name: 'Minerales & Carnaval Sociedad Anónima'
+        ticker: MiCaSA
+        share_price: 75
+        dividend_yield: 0.02
+        country: Brasil
+  - name: India
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'CastaTech Solutions Pvt. Ltd.'
+        ticker: CTSP
+        share_price: 90
+        dividend_yield: 0.02
+        country: India
+      - name: 'Bharata Holdings of Ancestral Wealth'
+        ticker: BHAW
+        share_price: 85
+        dividend_yield: 0.02
+        country: India
+  - name: Rusia
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'GazComPriv Export JSC'
+        ticker: GCPE
+        share_price: 100
+        dividend_yield: 0.02
+        country: Rusia
+      - name: 'SberFuture Artificial Stability'
+        ticker: SFAS
+        share_price: 95
+        dividend_yield: 0.02
+        country: Rusia
+  - name: China
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Pueblo Digital Unificado S.A.'
+        ticker: PDU
+        share_price: 110
+        dividend_yield: 0.02
+        country: China
+      - name: 'Dragón Celeste de Infraestructura Estatal'
+        ticker: DCIE
+        share_price: 100
+        dividend_yield: 0.02
+        country: China
+  - name: Argentina
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Alfajores Bursátiles del Sur S.A.'
+        ticker: ABS
+        share_price: 70
+        dividend_yield: 0.02
+        country: Argentina
+      - name: 'Litio Emocional Sociedad Anónima'
+        ticker: LESA
+        share_price: 80
+        dividend_yield: 0.02
+        country: Argentina
+  - name: Alemania
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Ordnung Maschinenbau AG'
+        ticker: OMA
+        share_price: 105
+        dividend_yield: 0.03
+        country: Alemania
+      - name: 'Banco Federal de Precisión Financiera'
+        ticker: BFPF
+        share_price: 100
+        dividend_yield: 0.03
+        country: Alemania
+  - name: Japón
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Nippon Kikai Zen Corporation'
+        ticker: NKZC
+        share_price: 100
+        dividend_yield: 0.02
+        country: Japón
+      - name: 'Sakura Neuralware Co.'
+        ticker: SNC
+        share_price: 95
+        dividend_yield: 0.02
+        country: Japón
+  - name: Sudáfrica
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'PanMinerals SA Holdings Ltd.'
+        ticker: PMSA
+        share_price: 90
+        dividend_yield: 0.02
+        country: Sudáfrica
+      - name: 'Ubuntu Energy Transition Inc.'
+        ticker: UETI
+        share_price: 85
+        dividend_yield: 0.02
+        country: Sudáfrica
+  - name: 'Arabia Saudita'
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Desierto Profundo Petroleros Ltd.'
+        ticker: DPPL
+        share_price: 110
+        dividend_yield: 0.02
+        country: 'Arabia Saudita'
+      - name: 'Peregrinaje Global de Servicios Hajj'
+        ticker: PGSH
+        share_price: 90
+        dividend_yield: 0.02
+        country: 'Arabia Saudita'
+  - name: Singapur
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Capitales Compactos Asia Pte. Ltd.'
+        ticker: CCAP
+        share_price: 100
+        dividend_yield: 0.02
+        country: Singapur
+      - name: 'Red Financiera Transoceánica'
+        ticker: RFT
+        share_price: 95
+        dividend_yield: 0.02
+        country: Singapur
+  - name: Suiza
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Fondo Eterno de Patrimonio Silente'
+        ticker: FEPS
+        share_price: 115
+        dividend_yield: 0.03
+        country: Suiza
+      - name: 'Custodia Alpina Unificada SA'
+        ticker: CAUSA
+        share_price: 110
+        dividend_yield: 0.03
+        country: Suiza
+  - name: 'Corea del Sur'
+    tax_rate: 0.2
+    interest_rate: 0.05
+    companies:
+      - name: 'Tecnología Orientada al Consenso'
+        ticker: TOC
+        share_price: 105
+        dividend_yield: 0.02
+        country: 'Corea del Sur'
+      - name: 'SeoulQuantum Industrial Holdings'
+        ticker: SQIH
+        share_price: 100
+        dividend_yield: 0.02
+        country: 'Corea del Sur'
