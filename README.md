@@ -59,6 +59,20 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python -m stockwolf.main
+```
+
+## ▶️ Running the game
+
+After installing the requirements you can launch either the classic text game or the StockWolf simulation:
+
+```bash
+pip install -r requirements.txt
+agentics        # launches the text game
+stockwolf       # runs the simulation demo
+```
+
+- `agentics` opens a retro, turn–based trading game.
+- `stockwolf` executes a small simulation showcasing the project’s economic agents.
 
 ---
 
