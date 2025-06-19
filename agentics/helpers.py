@@ -96,15 +96,4 @@ def round_down(n, decimals=0):
 def get_price(prices, company):
     """Return the price of ``company`` from a :class:`~agentics.classes.CompanyPrices` instance."""
 
-    if company == "acme":
-        return prices.acme
-    elif company == "globex":
-        return prices.globex
-    elif company == "initech":
-        return prices.initech
-    elif company == "umbrella":
-        return prices.umbrella
-    elif company == "cyberdyne":
-        return prices.cyberdyne
-    elif company == "soylent":
-        return prices.soylent
+    return getattr(prices, company)

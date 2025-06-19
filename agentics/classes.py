@@ -1,7 +1,10 @@
 """Game object models for the Drugwars simulation."""
 
 from random import randint, choice, seed, shuffle
+from pathlib import Path
+
 from .helpers import round_down
+from .data_bridge import load_yaml
 from common import Player as BasePlayer
 
 class Shark:
@@ -186,15 +189,16 @@ class Player(BasePlayer):
 class CompanyPrices:
     """Generate random share prices and place events."""
 
-    def __init__(self, player):
+    DEFAULT_DATA_PATH = Path(__file__).resolve().parents[1] / "stockwolf" / "data" / "official.yaml"
+
+    def __init__(self, player, data_path: Path | None = None):
         seed(randint(-10000, 10000))
         self.player = player
-        self.acme = randint(15000, 29999)
-        self.globex = randint(5000, 13999)
-        self.initech = randint(1000, 4999)
-        self.umbrella = randint(300, 899)
-        self.cyberdyne = randint(90, 249)
-        self.soylent = randint(10, 89)
+        self.available_companies = [c["ticker"].lower() for c in load_yaml(data_path or self.DEFAULT_DATA_PATH)]
+
+        required = set(self.available_companies) | {"acme", "globex", "initech", "umbrella", "cyberdyne", "soylent"}
+        for name in required:
+            setattr(self, name, randint(10, 300))
         self.actions = []
         events = [
             lambda self: self.regulators_probe_acme(),

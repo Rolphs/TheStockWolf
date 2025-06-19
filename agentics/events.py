@@ -628,20 +628,24 @@ def display_inventory(p, prices):
     """Return callables that print the player's inventory and money tables."""
 
     def inventory_table():
-        return [
-            ['Inventory', 'Days Left: ' + str(p.days_end - p.days)],
-            ['Cocaine: ' + str(round_down(p.cocaine)), 'Weed: ' + str(round_down(p.weed))],
-            ['Heroin: ' + str(round_down(p.heroin)), 'Speed: ' + str(round_down(p.speed))],
-            ['Acid: ' + str(round_down(p.acid)), 'Ludes: ' + str(round_down(p.ludes))],
-        ]
+        rows = [['Inventory', 'Days Left: ' + str(p.days_end - p.days)]]
+        items = [f"{c.capitalize()}: {getattr(p, c, 0)}" for c in prices.available_companies]
+        for i in range(0, len(items), 2):
+            pair = items[i:i+2]
+            if len(pair) == 1:
+                pair.append('')
+            rows.append(pair)
+        return rows
 
     def pricing_table():
-        return [
-            ['Current Area: ' + p.current_area, 'Coat Space: ' + str(p.coat_space()) + " / " + str(p.max_trench)],
-            ['Cocaine: ' + str(round_down(prices.cocaine)), 'Weed: ' + str(round_down(prices.weed))],
-            ['Heroin: ' + str(round_down(prices.heroin)), 'Speed: ' + str(round_down(prices.speed))],
-            ['Acid: ' + str(round_down(prices.acid)), 'Ludes: ' + str(round_down(prices.ludes))]
-        ]
+        rows = [['Current Area: ' + p.current_area, 'Coat Space: ' + str(p.coat_space()) + ' / ' + str(p.max_trench)]]
+        items = [f"{c.capitalize()}: {round_down(get_price(prices, c))}" for c in prices.available_companies]
+        for i in range(0, len(items), 2):
+            pair = items[i:i+2]
+            if len(pair) == 1:
+                pair.append('')
+            rows.append(pair)
+        return rows
 
     def money_table():
         return [
