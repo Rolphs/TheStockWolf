@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import argparse
 from terminaltables import SingleTable
 
 from agentics.events import clear, difficulty_screen, days_screen, main_screen
@@ -64,5 +65,13 @@ def run(data_path: str | Path | None = None) -> None:
         exit()
 
 
+def cli() -> None:
+    """Entry point for the console script."""
+    parser = argparse.ArgumentParser(description="Run StockWolf agentics game")
+    parser.add_argument("--yaml", "-y", type=Path, help="Path to YAML world file")
+    args = parser.parse_args()
+    run(args.yaml)
+
+
 if __name__ == "__main__":
-    run()
+    cli()

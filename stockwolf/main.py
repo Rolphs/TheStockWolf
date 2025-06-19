@@ -1,3 +1,4 @@
+import argparse
 import yaml
 from .agents.country import CountryAgent
 from .agents.company import Company
@@ -28,7 +29,7 @@ def build_world(data):
     return countries, market, [player]
 
 
-def main(path: str = None):
+def main(path: str | Path | None = None) -> None:
     path = Path(path or Path(__file__).resolve().parent / 'data' / 'official.yaml')
     data = load_data(path)
     countries, market, players = build_world(data)
@@ -38,5 +39,13 @@ def main(path: str = None):
     print(f"Player value: {players[0].value(market):.2f}")
 
 
+def cli() -> None:
+    """Entry point for console script."""
+    parser = argparse.ArgumentParser(description="Run StockWolf simulation")
+    parser.add_argument("--yaml", "-y", type=Path, help="Path to YAML world file")
+    args = parser.parse_args()
+    main(args.yaml)
+
+
 if __name__ == '__main__':
-    main()
+    cli()
