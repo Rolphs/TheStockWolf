@@ -22,7 +22,8 @@ setup(
     entry_points={
         'console_scripts': [
             'agentics = agentics.__main__:main',
-            'stockwolf = stockwolf.main:main'
+            'stockwolf = stockwolf.main:cli',
+            'stockwolf-game = integration.game_loop:cli'
         ],
     },
     classifiers=[  # Used by PyPI to classify the project and make it searchable
