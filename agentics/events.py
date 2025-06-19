@@ -722,4 +722,6 @@ def main_screen(p):
     p.is_first_round = False
     p.bank.interest()
     p.shark.interest()
-    main_screen(p)
+    # Return control to the caller so external loops can advance the
+    # simulation or perform other logic before showing the menu again.
+    return
