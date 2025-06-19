@@ -2,6 +2,7 @@
 
 from random import randint, choice, seed, shuffle
 from .helpers import round_down
+from common import Player as BasePlayer
 
 class Shark:
     """Loan shark tracking the player's debt."""
@@ -108,12 +109,13 @@ class Stash:
             return pref >= amount
         return False
 
-class Player:
+
+class Player(BasePlayer):
     """State of the current player including inventory and money."""
 
     def __init__(self):
+        super().__init__(cash=2000.0)
         self.is_first_round = True
-        self.money = 2000
         self.guns = 0
         self.days = 0
         self.days_end = 30
