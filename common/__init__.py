@@ -89,4 +89,30 @@ class CountryAgent:
             if getattr(company, 'country', None) == self.name:
                 company.share_price *= random.choice([1.05, 0.95])
 
-__all__ = ['Player', 'Company', 'Market', 'CountryAgent']
+
+@dataclass
+class RegulatorAgent:
+    name: str = 'Regulator'
+    power: float = 1.0
+
+
+@dataclass
+class BankAgent:
+    name: str = 'Bank'
+    funds: float = 1_000_000.0
+
+
+@dataclass
+class PlayerAgent:
+    name: str = 'Bot'
+    funds: float = 5000.0
+
+__all__ = [
+    'Player',
+    'Company',
+    'Market',
+    'CountryAgent',
+    'RegulatorAgent',
+    'BankAgent',
+    'PlayerAgent',
+]
