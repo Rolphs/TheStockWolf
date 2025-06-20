@@ -40,8 +40,10 @@ def test_build_world_creates_agents_and_lists_companies(monkeypatch):
 
     monkeypatch.setattr(Market, "list_company", spy)
 
-    countries, market, players = build_world(data)
+    countries, market, players, regulators, banks = build_world(data)
 
     assert len(countries) == 2
     assert len(calls) == 3
     assert players[0].portfolio == {}
+    assert regulators == []
+    assert banks == []
