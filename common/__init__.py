@@ -95,11 +95,27 @@ class RegulatorAgent:
     name: str = 'Regulator'
     power: float = 1.0
 
+    def inspect_market(self, market: 'Market') -> None:
+        """Inspect the market each tick.
+
+        The default implementation does nothing but can be overridden
+        by game logic or tests.
+        """
+        pass
+
 
 @dataclass
 class BankAgent:
     name: str = 'Bank'
     funds: float = 1_000_000.0
+
+    def provide_liquidity(self, market: 'Market') -> None:
+        """Provide liquidity to the market each tick.
+
+        The default implementation slightly increases market liquidity
+        to illustrate the effect of central banks.
+        """
+        market.liquidity *= 1.01
 
 
 @dataclass

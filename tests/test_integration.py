@@ -25,7 +25,7 @@ def test_hybrid_loop_basic(tmp_path):
     path.write_text(yaml_data)
     data = load_data(path)
 
-    countries, market, _ = build_world(data)
+    countries, market, _, regulators, banks = build_world(data)
     player = Player()
     setattr(player, 'foo', 0)
     comp = market.companies['FOO']
@@ -34,7 +34,7 @@ def test_hybrid_loop_basic(tmp_path):
     initial_cash = player.cash
     initial_price = comp.share_price
 
-    sim = Simulation(countries, market, [player])
+    sim = Simulation(countries, market, [player], regulators=regulators, banks=banks)
     sim.run(ticks=2)
 
     new_price = market.companies['FOO'].share_price
