@@ -74,6 +74,14 @@ stockwolf       # runs the simulation demo
 - `agentics` opens a retro, turn–based trading game.
 - `stockwolf` executes a small simulation showcasing the project’s economic agents.
 
+You can also supply a custom YAML file and the number of ticks to simulate:
+
+```bash
+stockwolf --yaml my_world.yaml --ticks 20
+```
+
+Without arguments the command uses `stockwolf/data/official.yaml` and runs for five ticks.
+
 ---
 
 🎮 ¿Qué hace el jugador?
