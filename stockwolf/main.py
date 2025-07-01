@@ -39,22 +39,24 @@ def build_world(data):
     return countries, market, [player], regulators, banks
 
 
-def main(path: str | Path | None = None) -> None:
+def main(path: str | Path | None = None, ticks: int = 5) -> Simulation:
     path = Path(path or Path(__file__).resolve().parent / 'data' / 'official.yaml')
     data = load_data(path)
     countries, market, players, regulators, banks = build_world(data)
     sim = Simulation(countries, market, players, regulators=regulators, banks=banks)
-    sim.run(ticks=5)
+    sim.run(ticks=ticks)
     print(f"Simulation finished after {sim.tick_count} ticks")
     print(f"Player value: {players[0].value(market):.2f}")
+    return sim
 
 
 def cli() -> None:
     """Entry point for console script."""
     parser = argparse.ArgumentParser(description="Run StockWolf simulation")
     parser.add_argument("--yaml", "-y", type=Path, help="Path to YAML world file")
+    parser.add_argument("--ticks", "-t", type=int, default=5, help="Number of ticks to run")
     args = parser.parse_args()
-    main(args.yaml)
+    main(args.yaml, ticks=args.ticks)
 
 
 if __name__ == '__main__':
