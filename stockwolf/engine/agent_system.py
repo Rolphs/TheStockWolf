@@ -50,6 +50,17 @@ class AgentSystem:
             bank.provide_liquidity(self.market)
         for country in self.countries:
             country.apply_policy(self.market)
+        for player in self.players:
+            if hasattr(player, "act"):
+                try:
+                    player.act(self.market)
+                except TypeError:
+                    player.act()
+            elif hasattr(player, "take_turn"):
+                try:
+                    player.take_turn(self.market)
+                except TypeError:
+                    player.take_turn()
         self.market.tick()
 
     def run(self, ticks: int = 1) -> None:
