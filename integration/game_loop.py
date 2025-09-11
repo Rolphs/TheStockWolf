@@ -14,7 +14,7 @@ def load_world(path: Path | None = None):
     """Load countries and market using StockWolf data."""
     data_path = path or Path(__file__).resolve().parents[1] / "stockwolf" / "data" / "official.yaml"
     data = load_data(data_path)
-    countries, market, _ = build_world(data)
+    countries, market, *_ = build_world(data)
     return countries, market
 
 
